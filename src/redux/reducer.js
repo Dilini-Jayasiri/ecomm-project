@@ -8,16 +8,21 @@ export const cartData = (data=[],action) => {
         case ADD_TO_CART :  
             console.warn("Add to cart condition",action)
             return [action.data, ...data]
-        case REMOVE_FROM_CART : 
-            console.warn("Remove cart condition",action) 
-            data.length= data.length? data.length-1: []
-            return [...data]
+        // case REMOVE_FROM_CART : 
+        //     console.warn("Remove cart condition",action) 
+        //     data.length= data.length? data.length-1: []
+        //     return [...data]
+        case REMOVE_FROM_CART:
+                console.warn("Remove cart condition", action);
+                return data.slice(0, -1);
+ /* your condition to identify the item to be removed */
+            
         case EMPTY_CART :  
             console.warn("Empty cart condition",action)
             data=[]
             return [...data]
         default:
-             return []
+             return data
         }
     }
     
